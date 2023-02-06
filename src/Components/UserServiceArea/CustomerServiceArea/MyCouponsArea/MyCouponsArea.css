@@ -1,0 +1,13 @@
+.MyCouponsArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.MyCouponsAreaH1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}

@@ -1,38 +1,49 @@
 .App {
-  text-align: center;
+    background-color: rgb(48, 48, 48);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+    width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App > .Header {
+    background: linear-gradient(
+        90deg,
+        rgb(48, 48, 49) 0%,
+        rgb(54, 98, 106) 52%
+    );
+    grid-column: 12 span;
+    grid-row: 1 span;
+    color: #fbfafa;
+    border-bottom: 1px solid white;
+    padding: 20px;
+    justify-content: space-between;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App > .Menu {
+    background-color: #d1d1d1;
+    border-bottom: 1px solid white;
+    grid-column: 12 span;
+    grid-row: 1 span;
+    justify-content: space-evenly;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App > .Main {
+    background: url(../src/Assets/Images/backgroundImage.webp);
+    background-size: 100%;
+    grid-column: 12 span;
+    grid-row: 9 span;
 }
-
-.App-link {
-  color: #61dafb;
+.App > .Main h1 {
+    /* color: #36626a; */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App > .Footer {
+    background: linear-gradient(
+        270deg,
+        rgb(48, 48, 49) 0%,
+        rgb(54, 98, 106) 52%
+    );
+    grid-column: 12 span;
+    grid-row: 4 span;
+    color: #fbfafa;
+    border-top: 1px solid white;
 }

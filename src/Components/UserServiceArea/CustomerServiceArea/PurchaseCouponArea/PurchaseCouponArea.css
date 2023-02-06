@@ -1,0 +1,31 @@
+.PurchaseCouponArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    flex-wrap: wrap;
+}
+.PurchaseCouponAreaH1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Purchase{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PurchaseB{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.PurchaseB:hover{
+  opacity: 0.7;
+}
+
+
+
