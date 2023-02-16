@@ -25,7 +25,8 @@
     border-bottom: 1px solid white;
     grid-column: 12 span;
     grid-row: 1 span;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    justify-content: center;
 }
 .App > .Main {
     background: url(../src/Assets/Images/backgroundImage.webp);
@@ -33,9 +34,7 @@
     grid-column: 12 span;
     grid-row: 9 span;
 }
-.App > .Main h1 {
-    /* color: #36626a; */
-}
+
 .App > .Footer {
     background: linear-gradient(
         270deg,

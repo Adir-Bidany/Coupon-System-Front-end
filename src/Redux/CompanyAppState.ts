@@ -1,67 +1,67 @@
-import { CompanyModel } from "../Models/Model";
+import { CouponModel } from "../Models/Model";
 
 export class CompanyAppState {
     // Step 1 - create the app state object
-    public companies: CompanyModel[] = [];
+    public coupons: CouponModel[] = [];
 }
 
 // Step 2 - define all required actions
 export enum ActionType {
-    GOT_ALL_COMPANIES = "GOT_ALL_COMPANIES",
-    GOT_SINGLE_COMPANY = "GOT_SINGLE_COMPANY",
-    ADDED_COMPANY = "ADDED_COMPANY",
-    UPDATED_COMPANY = "UPDATED_COMPANY",
-    DELETED_COMPANY = "DELETED_COMPANY",
-    REMOVED_COMPANY = "REMOVED_COMPANY",
+    GOT_ALL_COMPANY_COUPONS = "GOT_ALL_COMPANY_COUPONS",
+    GOT_SINGLE_COUPON = "GOT_SINGLE_COUPON",
+    ADDED_COUPON = "ADDED_COUPON",
+    UPDATED_COUPON = "UPDATED_COUPON",
+    DELETED_COUPON = "DELETED_COUPON",
+    REMOVED_COUPON = "REMOVED_COUPON",
 }
 
 // Step 3 - define what is action in terms of data
-export interface CompanyAction {
+export interface CouponAction {
     type: ActionType;
     payload: any;
 }
 
 // Step 4 - creator functions - gets payload regarding the action
-export function gotAllCompaniesAction(
-    companies: CompanyModel[]
-): CompanyAction {
+export function gotAllCompanyCouponsAction(
+    coupons: CouponModel[]
+): CouponAction {
     return {
-        type: ActionType.GOT_ALL_COMPANIES,
-        payload: companies,
+        type: ActionType.GOT_ALL_COMPANY_COUPONS,
+        payload: coupons,
     };
 }
 
-export function gotSingleCompanyAction(company: CompanyModel): CompanyAction {
+export function gotSingleCouponAction(coupon: CouponModel): CouponAction {
     return {
-        type: ActionType.GOT_SINGLE_COMPANY,
-        payload: company,
+        type: ActionType.GOT_SINGLE_COUPON,
+        payload: coupon,
     };
 }
 
-export function addedCompanyAction(task: CompanyModel): CompanyAction {
+export function addedCouponAction(coupon: CouponModel): CouponAction {
     return {
-        type: ActionType.ADDED_COMPANY,
-        payload: task,
+        type: ActionType.ADDED_COUPON,
+        payload: coupon,
     };
 }
 
-export function updatedCompanyACtion(task: CompanyModel): CompanyAction {
+export function updatedCouponACtion(coupon: CouponModel): CouponAction {
     return {
-        type: ActionType.UPDATED_COMPANY,
-        payload: task,
+        type: ActionType.UPDATED_COUPON,
+        payload: coupon,
     };
 }
 
-export function deletedCompanyAction(id: number): CompanyAction {
+export function deletedCouponAction(id: number): CouponAction {
     return {
-        type: ActionType.DELETED_COMPANY,
+        type: ActionType.DELETED_COUPON,
         payload: id,
     };
 }
 
-export function removeCompany(): CompanyAction {
+export function removeCoupons(): CouponAction {
     return {
-        type: ActionType.REMOVED_COMPANY,
+        type: ActionType.REMOVED_COUPON,
         payload: {},
     };
 }
@@ -69,36 +69,36 @@ export function removeCompany(): CompanyAction {
 // Step 5 - Reducer function perform the required action
 export function companyReducer(
     currentState: CompanyAppState = new CompanyAppState(),
-    action: CompanyAction
+    action: CouponAction
 ): CompanyAppState {
     const newState = { ...currentState }; //Spread Operator // Copy
     switch (action.type) {
-        case ActionType.GOT_ALL_COMPANIES: {
-            newState.companies = action.payload;
+        case ActionType.GOT_ALL_COMPANY_COUPONS: {
+            newState.coupons = action.payload;
             break;
         }
-        case ActionType.ADDED_COMPANY: {
-            newState.companies.push(action.payload);
+        case ActionType.ADDED_COUPON: {
+            newState.coupons.push(action.payload);
             break;
         }
-        case ActionType.UPDATED_COMPANY: {
-            console.log(newState.companies);
-            const idx = newState.companies.findIndex(
-                (company) => company.id === action.payload.id
+        case ActionType.UPDATED_COUPON: {
+            console.log(newState.coupons);
+            const idx = newState.coupons.findIndex(
+                (coupon) => coupon.id === action.payload.id
             );
-            newState.companies[idx] = action.payload;
-            console.log(newState.companies);
+            newState.coupons[idx] = action.payload;
+            console.log(newState.coupons);
             break;
         }
 
-        case ActionType.DELETED_COMPANY: {
-            newState.companies = newState.companies.filter(
-                (company) => company.id !== action.payload
+        case ActionType.DELETED_COUPON: {
+            newState.coupons = newState.coupons.filter(
+                (coupon) => coupon.id !== action.payload
             );
             break;
         }
-        case ActionType.REMOVED_COMPANY: {
-            newState.companies = [];
+        case ActionType.REMOVED_COUPON: {
+            newState.coupons = [];
             break;
         }
     }

@@ -3,7 +3,6 @@ import { BiEdit } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { CompanyModel } from "../../../Models/Model";
 import "./CompanyItem.css";
-import UpdateCompany from "../../UserServiceArea/AdminServiceArea/UpdateCompany/UpdateCompany";
 
 interface CompanyItemProps {
     company: CompanyModel;

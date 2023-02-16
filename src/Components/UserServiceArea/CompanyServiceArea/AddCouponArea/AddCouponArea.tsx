@@ -25,7 +25,7 @@ function AddCouponArea(): JSX.Element {
             .default(() => new Date()),
         endDate: yup
             .date()
-            .min(new Date(), "No option for previous time")
+            .min(yup.ref('startDate'), 'End date must be after start date')
             .default(new Date())
             .typeError("You must specify a endDate")
             .required("EndDate is required")
@@ -91,13 +91,15 @@ function AddCouponArea(): JSX.Element {
                 ) : (
                     <label htmlFor="category">Category</label>
                 )}
-                <input
-                    {...register("category")}
-                    id="category"
-                    name="category"
-                    type="text"
-                    placeholder="Category..."
-                />
+                <select className="select" {...register("category")}>
+                    <option value="default" disabled hidden>
+                        Please choose category
+                    </option>
+                    <option value="FOOD">FOOD</option>
+                    <option value="ELECTRICITY">ELECTRICITY</option>
+                    <option value="VACATION">VACATION</option>
+                    <option value="RESTAURANT">RESTAURANT</option>
+                </select>
 
                 {errors.description ? (
                     <span>{errors.description?.message}</span>
@@ -167,7 +169,7 @@ function AddCouponArea(): JSX.Element {
                 {errors.image ? (
                     <span>{errors.image?.message}</span>
                 ) : (
-                    <label htmlFor="title">Image</label>
+                    <label htmlFor="image">Image</label>
                 )}
                 <input
                     {...register("image")}

@@ -1,72 +1,115 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./PurchaseCouponArea.css";
 import { CouponModel } from "../../../../Models/Model";
 import customerWebApi from "../../../../Services/CustomerWebApi";
 import notify from "../../../../Services/ErrorMSG";
 import PurchaseCouponItem from "../../../Items/PurchaseCouponItem/PurchaseCouponItem";
-import FilterCategory from "../FilterCategory/FilterCategory";
-// import Card from "../../SharedArea/Card/Card";
 
 function PurchaseCouponArea(): JSX.Element {
     const [coupons, setCoupons] = useState<CouponModel[]>([]);
+    const [origin, setOrigin] = useState<CouponModel[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedPrice, setSelectedPrice] = useState(300);
     useEffect(() => {
         customerWebApi
             .couponsList()
-            .then((res) => setCoupons(res.data))
+            .then((res) => {
+                setCoupons(res.data);
+                setOrigin(res.data);
+            })
             .catch((err) => notify.error(err));
-    },[]);
+    }, []);
+    console.log(coupons);
+    console.log(origin);
 
-    let [filterTextValue, setFilterTextValue] = useState("All");
+    const all = origin;
+    const byCategory = origin.filter((c) => c.category === selectedCategory);
+    const byPrice = origin.filter((c) => c.price < selectedPrice);
+    const byBoth = origin
+        .filter((c) => c.category === selectedCategory)
+        .filter((c) => c.price < selectedPrice);
 
-    let filteredCategoryList = coupons.filter((coupon) => {
-        switch (filterTextValue) {
-            case "FOOD":
-                return coupon.category === "FOOD";
-                break;
-
-            case "FOOD":
-                return coupon.category === "FOOD";
-                break;
-            case "RESTAURANT":
-                return coupon.category === "RESTAURANT";
-                break;
-            case "ELECTRICITY":
-                return coupon.category === "ELECTRICITY";
-                break;
-
-            default:
-                return coupon;
-                break;
-        
+    useEffect(() => {
+        if (selectedCategory === "All" && selectedPrice === 300) {
+            setCoupons(all);
+            return;
         }
-        // if (filterTextValue === "FOOD") {
-        //     return coupon.category === "FOOD";
-        // } else if (filterTextValue === "ELECTRICITY") {
-        //     return coupon.category === "ELECTRICITY";
-        // } else if (filterTextValue === "RESTAURANT") {
-        //     return coupon.category === "RESTAURANT";
-        // } else if (filterTextValue === "VACATION") {
-        //     return coupon.category === "VACATION";
-        // } else if (
-        //     filterTextValue === "RESTAURANT" ||
-        //     "FOOD" ||
-        //     "ELECTRICITY"
-        // ) {
-        //     return coupon;
-        // }
-    });
+        if (selectedCategory === "All" && selectedPrice < 300) {
+            setCoupons(byPrice);
+            return;
+        }
+        if (selectedCategory !== "All" && selectedPrice === 300) {
+            setCoupons(byCategory);
+            return;
+        }
+        if (selectedCategory !== "All" && selectedPrice < 300) {
+            setCoupons(byBoth);
+            return;
+        }
+    }, [selectedCategory, selectedPrice]);
+    const categoryOptions = [
+        { value: "All", label: "All" },
+        { value: "FOOD", label: "FOOD" },
+        { value: "RESTAURANT", label: "RESTAURANT" },
+        { value: "ELECTRICITYl", label: "ELECTRICITY" },
+        { value: "VACATION", label: "VACATION" },
+    ];
 
-    function onFilterValueSelected(filterValue: SetStateAction<string>) {
-        setFilterTextValue(filterValue);
-    }
+    const priceOptions = [
+        { value: "All", label: "All" },
+        { value: "10", label: "10" },
+        { value: "20", label: "20" },
+        { value: "30", label: "30" },
+        { value: "40", label: "40" },
+        { value: "300", label: "300" },
+    ];
+
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedCategory(e.target.value);
+    };
+
+    const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        switch (e.target.value) {
+            case "10": {
+                setSelectedPrice(10);
+                break;
+            }
+            case "20": {
+                setSelectedPrice(20);
+                break;
+            }
+            case "30": {
+                setSelectedPrice(30);
+                break;
+            }
+            case "40": {
+                setSelectedPrice(40);
+                break;
+            }
+            default:
+                setSelectedPrice(300);
+                break;
+        }
+    };
 
     return (
         <div>
-            <h1 className="PurchaseCouponAreaH1">Coupons list</h1>
-            <FilterCategory filterValueSelected={onFilterValueSelected} />
-
             <div className="PurchaseCouponArea">
-                {filteredCategoryList.map((c, idx) => (
+                <label htmlFor="category">Filter by category</label>
+                <select id="category" onChange={handleCategoryChange}>
+                    {categoryOptions.map((op, idx) => (
+                        <option key={idx}>{op.label}</option>
+                    ))}
+                </select>
+                <label htmlFor="price">Filter by price</label>
+                <select id="price" onChange={handlePriceChange}>
+                    {priceOptions.map((op, idx) => (
+                        <option key={idx}>{op.label}</option>
+                    ))}
+                </select>
+            </div>
+            <div className="CompanyCoupons">
+                {coupons.map((c, idx) => (
                     <PurchaseCouponItem key={"c" + idx} coupon={c} />
                 ))}
             </div>

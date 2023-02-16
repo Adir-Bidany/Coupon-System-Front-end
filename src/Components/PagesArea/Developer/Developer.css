@@ -1,9 +1,8 @@
-.Developer > p {
+.Developer > h3 {
     display: flex;
     justify-content: left;
     padding-left: 80px;
     padding-right: 80px;
-    font-size: 30px;
     text-align: center;
 }
 .Developer > img {

@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import App from "../../App";
 import Login from "../AuthArea/Login/Login";
 import Logout from "../AuthArea/Logout/Logout";
-// import Register from "../AuthArea/Register/Register";
 import About from "../PagesArea/About/About";
 import Developer from "../PagesArea/Developer/Developer";
 import Home from "../PagesArea/Home/Home";
@@ -11,7 +10,9 @@ import AddCompany from "../UserServiceArea/AdminServiceArea/AddCompany/AddCompan
 import AddCustomer from "../UserServiceArea/AdminServiceArea/AddCustomer/AddCustomer";
 import DeleteCompany from "../UserServiceArea/AdminServiceArea/DeleteCompany/DeleteCompany";
 import DeleteCustomer from "../UserServiceArea/AdminServiceArea/DeleteCustomer/DeleteCustomer";
+import GetSingleCompany from "../UserServiceArea/AdminServiceArea/GetSingleCompany/GetSingleCompany";
 import GetAllCompanies from "../UserServiceArea/AdminServiceArea/GetAllCompanies/GetAllCompanies";
+import GetSingleCustomer from "../UserServiceArea/AdminServiceArea/GetSingleCustomer/GetSingleCustomer";
 import MyCustomers from "../UserServiceArea/AdminServiceArea/MyCustomers/MyCustomers";
 import UpdateCompany from "../UserServiceArea/AdminServiceArea/UpdateCompany/UpdateCompany";
 import AddCouponArea from "../UserServiceArea/CompanyServiceArea/AddCouponArea/AddCouponArea";
@@ -20,7 +21,9 @@ import DeleteCoupon from "../UserServiceArea/CompanyServiceArea/DeleteCoupon/Del
 import UpdateCoupon from "../UserServiceArea/CompanyServiceArea/UpdateCoupon/UpdateCoupon";
 import MyCouponsArea from "../UserServiceArea/CustomerServiceArea/MyCouponsArea/MyCouponsArea";
 import PurchaseCouponArea from "../UserServiceArea/CustomerServiceArea/PurchaseCouponArea/PurchaseCouponArea";
+import GetSingleCoupon from "../UserServiceArea/CompanyServiceArea/GetSingleCoupon/GetSingleCoupon";
 import "./Routing.css";
+import UpdateCustomer from "../UserServiceArea/AdminServiceArea/UpdateCustomer/UpdateCustomer";
 
 function Routing(): JSX.Element {
     return (
@@ -30,7 +33,6 @@ function Routing(): JSX.Element {
                 <Route path="home" element={<Home />} />
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
-                {/* <Route path="register" element={<Register />} /> */}
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<Logout />} />
                 <Route path="purchase" element={<PurchaseCouponArea />} />
@@ -40,10 +42,17 @@ function Routing(): JSX.Element {
                 <Route path="addCustomer" element={<AddCustomer />} />
                 <Route path="deleteCompany/:id" element={<DeleteCompany />} />
                 <Route path="updateCompany/:id" element={<UpdateCompany />} />
+                <Route path="updateCustomer/:id" element={<UpdateCustomer />} />
                 <Route path="myCompanies" element={<GetAllCompanies />} />
+                <Route path="getSingleCompany" element={<GetSingleCompany />} />
+                <Route
+                    path="getSingleCustomer"
+                    element={<GetSingleCustomer />}
+                />
                 <Route path="myCustomers" element={<MyCustomers />} />
                 <Route path="addCompany" element={<AddCompany />} />
                 <Route path="companyCoupons" element={<CompanyCoupons />} />
+                <Route path="findCoupon" element={<GetSingleCoupon />} />
                 <Route path="deleteCoupon/:id" element={<DeleteCoupon />} />
                 <Route path="updateCoupon/:id" element={<UpdateCoupon />} />
                 <Route path="deleteCustomer/:id" element={<DeleteCustomer />} />

@@ -1,13 +1,15 @@
 import { combineReducers, createStore } from "redux";
+import { adminReducer } from "./AdminAppState";
 import { companyReducer } from "./CompanyAppState";
-import { couponReducer } from "./CouponAppState";
+import { customerReducer } from "./CustomerAppState";
 import { userReducer } from "./UserAppState";
 
 // Multiple catsReducer
 const reducers = combineReducers({
     userReducer: userReducer,
     companyReducer: companyReducer,
-    couponReducer: couponReducer,
+    adminReducer: adminReducer,
+    customerReducer: customerReducer,
 });
 
 const store = createStore(reducers);

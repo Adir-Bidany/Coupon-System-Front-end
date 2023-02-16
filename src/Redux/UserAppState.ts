@@ -1,14 +1,13 @@
 import { User } from "./../Models/Auth";
 export class UserAppState {
     // Step 1 - Define User global App State
-    public user: User = {  token: "" ,email:""};
+    public user: User = {  token: "" ,email:"",clientType:""};
 }
 
 // Step 2 - Define all actions
 export enum ActionType {
     LOGGED_IN = "LOGGED_IN",
     LOGGED_OUT = "LOGGED_OUT",
-    REGISTERED = "REGISTERED",
 }
 
 // Step 3 - define what is action in terms of data
@@ -22,13 +21,6 @@ export function loggedIn(user: User): UserAction {
     return {
         type: ActionType.LOGGED_IN,
         payload: user,
-    };
-}
-
-export function registered(): UserAction {
-    return {
-        type: ActionType.REGISTERED,
-        payload: {},
     };
 }
 
@@ -54,11 +46,9 @@ export function userReducer(
         }
         case ActionType.LOGGED_OUT: {
             console.log(newState.user);
-            newState.user = {  token: "" ,email: ""};
+            newState.user = {  token: "" ,email: "",clientType:""};
             console.log(newState.user);
             break;
-        }
-        case ActionType.REGISTERED: {
         }
     }
 

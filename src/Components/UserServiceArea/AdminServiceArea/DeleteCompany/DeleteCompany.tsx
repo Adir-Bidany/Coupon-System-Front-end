@@ -27,9 +27,15 @@ function DeleteCompany(): JSX.Element {
     return (
         <div className="DeleteCompany col">
             <h1>Delete Company</h1>
-            <h2>are you sure you want to delete company #{companyId}</h2>
-            <button onClick={cancel}>cancel</button>
-            <button onClick={deleteCompany}>yes</button>
+            <h2 className="redColor">
+                Are you sure you want to delete company #{companyId}
+            </h2>
+            <button className="delete" onClick={cancel}>
+                cancel
+            </button>
+            <button className="delete" onClick={deleteCompany}>
+                yes
+            </button>
         </div>
     );
 }

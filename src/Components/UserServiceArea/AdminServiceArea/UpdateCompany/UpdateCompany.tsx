@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CompanyUpdateModel } from "../../../../Models/Model";
 import { useNavigate, useParams } from "react-router-dom";
 import adminWebApi from "./../../../../Services/AdminWebApi";
-
 import store from "../../../../Redux/Store";
 import { useState } from "react";
 import notify from "../../../../Services/ErrorMSG";
@@ -16,9 +15,9 @@ function UpdateCompany(): JSX.Element {
     const [company, setCompany] = useState(
         store
             .getState()
-            .companyReducer.companies.filter((comp) => comp.id === id)[0]
+            .adminReducer.companies.filter((comp) => comp.id === id)[0]
     );
-    console.log(store.getState().companyReducer.companies);
+    console.log(store.getState().adminReducer.companies);
     console.log(company);
     const navigate = useNavigate();
     let defaultValuesObj = {
@@ -39,7 +38,6 @@ function UpdateCompany(): JSX.Element {
     };
 
     const schema = yup.object().shape({
-        // name: yup.string().required("Name is required"),
         email: yup.string().required("Email is required"),
         password: yup.string().required("Password is required"),
     });
@@ -63,18 +61,6 @@ function UpdateCompany(): JSX.Element {
         <div className="UpdateCompany col">
             <h1>Update Company</h1>
             <form onSubmit={handleSubmit(updateCompany)}>
-                {/* {errors.name ? (
-          <span>{errors.name?.message}</span>
-        ) : (
-          <label htmlFor="name">Name</label>
-        )}
-        <input
-          {...register("name")}
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Name..."
-        /> */}
 
                 {errors.email ? (
                     <span>{errors.email?.message}</span>

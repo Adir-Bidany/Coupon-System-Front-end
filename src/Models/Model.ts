@@ -21,16 +21,16 @@ export interface CouponModel {
     category: string;
     title: string;
     description: string;
-    startDate: string;
-    endDate: string;
+    startDate: Date;
+    endDate: Date;
     price: number;
     amount: number;
     image: string;
 }
 
 export interface CouponPayloadModel {
-    category: string;
     title: string;
+    category: string;
     description: string;
     startDate: Date;
     endDate: Date;
@@ -88,6 +88,26 @@ export class UpdateCompany {
     public password?: string;
 
     public constructor(email?: string, password?: string) {
+        this.email = email;
+        this.password = password;
+    }
+}
+export interface CustomerUpdateModel {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+export class updateCustomer {
+    public firstName?: string;
+    public lastName?: string;
+    public email?: string;
+    public password?: string;
+
+    public constructor(firstName?: string, lastName?: string,email?: string, password?: string) {
+        this.firstName=firstName;
+        this.lastName=lastName;
         this.email = email;
         this.password = password;
     }

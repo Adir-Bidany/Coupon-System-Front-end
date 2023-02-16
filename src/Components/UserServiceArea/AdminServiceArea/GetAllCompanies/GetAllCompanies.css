@@ -16,5 +16,5 @@
     display: flex;
     justify-content:space-evenly;
     flex-direction: row;
-    padding: 0;
+    padding-top: 20px;
 }

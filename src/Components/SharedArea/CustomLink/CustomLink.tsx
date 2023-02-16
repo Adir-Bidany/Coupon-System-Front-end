@@ -9,7 +9,7 @@ function CustomLink(props: CustomLinkProps): JSX.Element {
     const resolved = useResolvedPath(props.to);
     const match = useMatch({ path: resolved.pathname, end: true });
     return (
-        <div className="Menu">
+        <div className="topnav">
             <Link className={match ? "active" : "regular"} to={props.to}>
                 {props.children}
             </Link>

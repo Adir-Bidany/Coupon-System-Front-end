@@ -2,33 +2,44 @@ import "./UpdateCoupon.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { CouponModel, CouponPayloadModel } from "../../../../Models/Model";
+import { CouponPayloadModel } from "../../../../Models/Model";
 import companyWebApi from "../../../../Services/CompanyWebApi";
 import notify from "../../../../Services/ErrorMSG";
 import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import store from "../../../../Redux/Store";
 
 function UpdateCoupon(): JSX.Element {
     const navigate = useNavigate();
 
-    const params=useParams();
-    const id=+(params.id||0)
-    
+    const params = useParams();
+    const id = +(params.id || 0);
+
+    const [coupon, setCoupon] = useState(
+        store
+            .getState()
+            .companyReducer.coupons.filter((coup) => coup.id === id)[0]
+    );
+
     let defaultValuesObj = {
-            title: "Moshe",
-            category: "FOOD",
-            description: "moshe",
-            startDate: new Date(),
-            endDate: new Date(),
-            amount: 5,
-            price: 5,
-            image: "moshe",
+        ...{
+            title: coupon.title,
+            category: coupon.category,
+            description: coupon.description,
+            startDate: coupon.startDate,
+            endDate: coupon.endDate,
+            amount: coupon.amount,
+            price: coupon.price,
+            image: coupon.image,
+        },
     };
+    const companyId = coupon.company.id;
 
     const putCoupon = async (coupon: CouponPayloadModel) => {
-
         console.log(coupon);
+        console.log(companyId);
         await companyWebApi
-            .updateCoupon(1,id, coupon)
+            .updateCoupon(companyId, id, coupon)
             .then((res) => {
                 notify.success("Coupon updated");
                 navigate("/companyCoupons");
@@ -53,7 +64,7 @@ function UpdateCoupon(): JSX.Element {
             .default(() => new Date()),
         endDate: yup
             .date()
-            .min(new Date(), "No option for previous time")
+            .min(yup.ref("startDate"), "End date must be after start date")
             .default(new Date())
             .typeError("You must specify a endDate")
             .required("EndDate is required")
@@ -87,8 +98,6 @@ function UpdateCoupon(): JSX.Element {
     //     control,
     // });
 
-    
-
     return (
         <div className="UpdateCoupon col">
             <h1>Update Coupon</h1>
@@ -105,19 +114,20 @@ function UpdateCoupon(): JSX.Element {
                     type="text"
                     placeholder="Title..."
                 />
-
                 {errors.category ? (
                     <span>{errors.category?.message}</span>
                 ) : (
                     <label htmlFor="category">Category</label>
                 )}
-                <input
-                    {...register("category")}
-                    id="category"
-                    name="category"
-                    type="text"
-                    placeholder="Category..."
-                />
+                <select className="select" {...register("category")}>
+                    <option value="default" disabled hidden>
+                        Please choose category
+                    </option>
+                    <option value="FOOD">FOOD</option>
+                    <option value="ELECTRICITY">ELECTRICITY</option>
+                    <option value="VACATION">VACATION</option>
+                    <option value="RESTAURANT">RESTAURANT</option>
+                </select>
 
                 {errors.description ? (
                     <span>{errors.description?.message}</span>

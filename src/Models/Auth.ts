@@ -4,12 +4,6 @@ export interface LoginModel {
     password: string;
 }
 
-export interface RegisterModel {
-    email: string;
-    password: string;
-    confirm: string;
-}
-
 export interface Credentials {
     clientType: string;
     email: string;
@@ -19,4 +13,5 @@ export interface Credentials {
 export interface User {
     token: string;
     email: string;
+    clientType:string;
 }

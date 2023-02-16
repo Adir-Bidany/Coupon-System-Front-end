@@ -27,9 +27,15 @@ function DeleteCustomer(): JSX.Element {
     return (
         <div className="DeleteCustomer col">
             <h1>Delete customer</h1>
-            <h2>are you sure you want to delete customer #{customerId}</h2>
-            <button onClick={cancel}>cancel</button>
-            <button onClick={deleteCustomer}>yes</button>
+            <h2 className="redColor">
+                Are you sure you want to delete customer #{customerId}
+            </h2>
+            <button className="delete" onClick={cancel}>
+                cancel
+            </button>
+            <button className="delete" onClick={deleteCustomer}>
+                yes
+            </button>
         </div>
     );  
 }

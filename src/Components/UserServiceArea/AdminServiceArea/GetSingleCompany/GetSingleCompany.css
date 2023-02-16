@@ -1,0 +1,10 @@
+.GetSingleCompany button{
+
+    width: 205px;
+    height: 25px;
+    margin: 5px;
+    background-color: #1c3c5c;
+    color: white;
+    border: none;
+    font-size: medium;
+}

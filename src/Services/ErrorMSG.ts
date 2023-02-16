@@ -19,7 +19,6 @@ class Notify {
         }
 
         if (typeof err?.response?.data.value === "string") {
-            //Kobi's backend
             return err.response.data.value;
         }
 
