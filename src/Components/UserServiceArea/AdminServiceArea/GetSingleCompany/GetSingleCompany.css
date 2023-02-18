@@ -1,6 +1,21 @@
-.GetSingleCompany button{
+.GetSingleCompany{
 
-    width: 205px;
+}
+
+.GetSingleCompany form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.GetSingleCompany input
+input[type="number"] {
+    width: 200px;
+    height: 25px;
+}
+
+.GetSingleCompany button {
+    width: 100%;
     height: 25px;
     margin: 5px;
     background-color: #1c3c5c;
@@ -8,3 +23,7 @@
     border: none;
     font-size: medium;
 }
+.GetSingleCompany button:hover {
+    color: black;
+}
+

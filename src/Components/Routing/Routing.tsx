@@ -21,7 +21,6 @@ import DeleteCoupon from "../UserServiceArea/CompanyServiceArea/DeleteCoupon/Del
 import UpdateCoupon from "../UserServiceArea/CompanyServiceArea/UpdateCoupon/UpdateCoupon";
 import MyCouponsArea from "../UserServiceArea/CustomerServiceArea/MyCouponsArea/MyCouponsArea";
 import PurchaseCouponArea from "../UserServiceArea/CustomerServiceArea/PurchaseCouponArea/PurchaseCouponArea";
-import GetSingleCoupon from "../UserServiceArea/CompanyServiceArea/GetSingleCoupon/GetSingleCoupon";
 import "./Routing.css";
 import UpdateCustomer from "../UserServiceArea/AdminServiceArea/UpdateCustomer/UpdateCustomer";
 
@@ -52,7 +51,6 @@ function Routing(): JSX.Element {
                 <Route path="myCustomers" element={<MyCustomers />} />
                 <Route path="addCompany" element={<AddCompany />} />
                 <Route path="companyCoupons" element={<CompanyCoupons />} />
-                <Route path="findCoupon" element={<GetSingleCoupon />} />
                 <Route path="deleteCoupon/:id" element={<DeleteCoupon />} />
                 <Route path="updateCoupon/:id" element={<UpdateCoupon />} />
                 <Route path="deleteCustomer/:id" element={<DeleteCustomer />} />

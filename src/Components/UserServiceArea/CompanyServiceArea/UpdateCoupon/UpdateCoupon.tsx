@@ -33,13 +33,10 @@ function UpdateCoupon(): JSX.Element {
             image: coupon.image,
         },
     };
-    const companyId = coupon.company.id;
 
     const putCoupon = async (coupon: CouponPayloadModel) => {
-        console.log(coupon);
-        console.log(companyId);
         await companyWebApi
-            .updateCoupon(companyId, id, coupon)
+            .updateCoupon(id, coupon)
             .then((res) => {
                 notify.success("Coupon updated");
                 navigate("/companyCoupons");

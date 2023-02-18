@@ -16,6 +16,7 @@ function PurchaseCouponItem(props: PurchaseCouponItemProps): JSX.Element {
     const navigate = useNavigate();
 
     const addCouponToCustomer = async () => {
+        
         await customerWebApi
             .purchaseCoupon(user.token, props.coupon.id)
             .then((res) => {

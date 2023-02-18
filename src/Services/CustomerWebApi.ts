@@ -9,31 +9,28 @@ class CustomerWebApi {
     ): Promise<AxiosResponse<CouponModel[]>> {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        return axios.get<CouponModel[]>(
-            global.urls.customer + "/token/" + token + "/coupons",
-            { headers }
-        );
+        const url = global.urls.customer + "/token/" + token + "/coupons";
+        return axios.get<CouponModel[]>(url, { headers });
     }
 
     public couponsList(): Promise<AxiosResponse<CouponModel[]>> {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        return axios.get<CouponModel[]>(global.urls.admin + "/coupons", {
+        const url = global.urls.admin + "/coupons";
+        return axios.get<CouponModel[]>(url, {
             headers,
         });
     }
 
-    public purchaseCoupon(
+    public purchaseCoupon = (
         token: string,
         couponId: number
-    ): Promise<AxiosResponse<CouponModel[]>> {
+    ): Promise<AxiosResponse<any>> => {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        return axios.post<CouponModel[]>(
-            global.urls.customer + "/v2/" + token + "/coupons/" + couponId,
-            { headers }
-        );
-    }
+        const url = global.urls.customer + "/" + token + "/coupons/" + couponId;
+        return axios.post<any>(url, { headers, });
+    };
 }
 const customerWebApi = new CustomerWebApi();
 export default customerWebApi;

@@ -54,8 +54,13 @@ const postLogin = async (obj: LoginModel) => {
 };
     return (
         <div className="Login col">
-            <form onSubmit={handleSubmit(postLogin)} >
-                <select className="select"{...register("clientType")}>
+            <form onSubmit={handleSubmit(postLogin)}>
+                <label htmlFor="userType">User type</label>
+                <select
+                    className="select"
+                    id="userType"
+                    {...register("clientType")}
+                >
                     <option value="default" disabled hidden>
                         Please choose user
                     </option>

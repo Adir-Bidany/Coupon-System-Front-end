@@ -39,15 +39,11 @@ export function userReducer(
     const newState = { ...currentState }; // copy
     switch (action.type) {
         case ActionType.LOGGED_IN: {
-            console.log(newState.user);
             newState.user = action.payload;
-            console.log(newState.user);
             break;
         }
         case ActionType.LOGGED_OUT: {
-            console.log(newState.user);
             newState.user = {  token: "" ,email: "",clientType:""};
-            console.log(newState.user);
             break;
         }
     }

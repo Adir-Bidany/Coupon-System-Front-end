@@ -24,7 +24,7 @@ input[type="email"] {
     font-size: medium;
 }
 .AddCustomer button:hover {
-    color: black;
+    font-weight: 700;
 }
 .AddCustomer button:disabled {
     cursor: not-allowed;

@@ -30,12 +30,14 @@ function DeleteCompany(): JSX.Element {
             <h2 className="redColor">
                 Are you sure you want to delete company #{companyId}
             </h2>
-            <button className="delete" onClick={cancel}>
-                cancel
-            </button>
-            <button className="delete" onClick={deleteCompany}>
-                yes
-            </button>
+            <div className="row">
+                <button className="delete" onClick={cancel}>
+                    cancel
+                </button>
+                <button className="delete" onClick={deleteCompany}>
+                    yes
+                </button>
+            </div>
         </div>
     );
 }

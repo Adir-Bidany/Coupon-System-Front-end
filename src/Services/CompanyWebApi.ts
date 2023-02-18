@@ -8,16 +8,16 @@ class CompanyWebApi {
         token: string,
         coupon: CouponPayloadModel
     ): Promise<AxiosResponse<any>> => {
-        const url = global.urls.company + "/v2/" + token + "/coupons";
+        const url = global.urls.company + "/" + token + "/coupons";
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
         return axios.post<any>(url, coupon, { headers });
     };
 
     public deleteCoupon = (couponId: number): Promise<AxiosResponse<any>> => {
-        const url = global.urls.company + "/coupons/" + couponId;
-        const token2 = store.getState().userReducer.user.token;
-        const headers = { authorization: token2 };
+        const token = store.getState().userReducer.user.token;
+        const headers = { authorization: token };
+        const url = global.urls.company + "/" + token + "/coupons/" + couponId;
         return axios.delete<any>(url, { headers });
     };
 
@@ -26,10 +26,8 @@ class CompanyWebApi {
     ): Promise<AxiosResponse<CouponModel[]>> {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        return axios.get<CouponModel[]>(
-            global.urls.company + "/token/" + token + "/coupons",
-            { headers }
-        );
+        const url = global.urls.company + "/token/" + token + "/coupons";
+        return axios.get<CouponModel[]>(url, { headers });
     }
 
     public getSingleCoupon(
@@ -37,23 +35,17 @@ class CompanyWebApi {
     ): Promise<AxiosResponse<CouponModel>> {
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
-        return axios.get<CouponModel>(
-            global.urls.company + "/coupons/" + couponId,
-            {
-                headers,
-            }
-        );
+        const url = global.urls.company + "/coupons/" + couponId;
+        return axios.get<CouponModel>(url, { headers });
     }
 
     public updateCoupon = (
-        companyId: number,
         couponId: number,
         coupon: CouponPayloadModel
     ): Promise<AxiosResponse<CouponModel>> => {
-        const url =
-            global.urls.company + "/" + companyId + "/coupons/" + couponId;
-        const token2 = store.getState().userReducer.user.token;
-        const headers = { authorization: token2 };
+        const token = store.getState().userReducer.user.token;
+        const headers = { authorization: token };
+        const url = global.urls.company + "/" + token + "/coupons/" + couponId;
         return axios.put<CouponModel>(url, coupon, { headers });
     };
 }

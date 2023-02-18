@@ -31,12 +31,14 @@ function DeleteCoupon(): JSX.Element {
             <h2 className="redColor">
                 Are you sure coupon you want to delete coupon #{couponId}
             </h2>
-            <button className="delete" onClick={cancel}>
-                cancel
-            </button>
-            <button className="delete" onClick={deleteCoupon}>
-                yes
-            </button>
+            <div className="row">
+                <button className="delete" onClick={cancel}>
+                    cancel
+                </button>
+                <button className="delete" onClick={deleteCoupon}>
+                    yes
+                </button>
+            </div>
         </div>
     );
 }

@@ -29,7 +29,7 @@ input[type="email"]
 }
 .AddCompany button:disabled {
     cursor: not-allowed;
-    color: black;
+    color: red;
 }
 
 .AddCompany span {

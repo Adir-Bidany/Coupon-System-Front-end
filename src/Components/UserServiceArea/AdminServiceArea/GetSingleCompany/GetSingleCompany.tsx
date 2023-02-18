@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { CompanyModel } from "../../../../Models/Model";
 import store from "../../../../Redux/Store";
 import adminWebApi from "../../../../Services/AdminWebApi";
@@ -6,47 +7,46 @@ import notify from "../../../../Services/ErrorMSG";
 import CompanyItem from "../../../Items/CompanyItem/CompanyItem";
 import "./GetSingleCompany.css";
 
+type FormValues = {
+    companyId: number;
+};
+
 function GetSingleCompany(): JSX.Element {
     const [companies, setCompanies] = useState(
         store.getState().adminReducer.companies
     );
 
-    const [inputValue, setInputValue] = useState<string>("");
     const [outputValue, setOutputValue] = useState<number>(0);
+    const { register, handleSubmit } = useForm<FormValues>();
+    const [companyToShow, setCompanyToShow] = useState<CompanyModel[]>([]);
 
-    const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value);
-        await adminWebApi
-            .getSingleCompany(parseInt(event.target.value))
-            .then((res) => {
-                notify.success("company found");
-            })
-            .catch((err) => {
-                notify.error(err);
-            });
-    };
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setOutputValue(parseInt(inputValue));
+    const handleChange = async (data: FormValues) => {
+        setOutputValue(data.companyId);
     };
 
-    const companyToShow: CompanyModel[] = companies.filter(
-        (c) => c.id === outputValue
-    );
+    useEffect(() => {
+        if (outputValue !== 0) {
+            adminWebApi
+                .getSingleCompany(outputValue)
+                .then((res) => {
+                    setCompanyToShow([res.data]);
+                    notify.success("company found");
+                })
+                .catch((err) => {
+                    setCompanyToShow([]);
+                    notify.error(err);
+                });
+        }
+    }, [outputValue]);
     return (
         <div className="GetSingleCompany col">
             <h1>Find Company</h1>
-            <div className="col">
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="number"
-                        value={inputValue}
-                        onChange={handleChange}
-                    />
+            <div>
+                <form onSubmit={handleSubmit(handleChange)}>
+                    <input {...register("companyId")} type="number" />
                     <button type="submit">Find</button>
                 </form>
             </div>
-
             <div>
                 {companyToShow.map((c, idx) => (
                     <CompanyItem key={"c" + idx} company={c} />

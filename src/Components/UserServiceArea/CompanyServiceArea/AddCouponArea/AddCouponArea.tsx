@@ -177,6 +177,7 @@ function AddCouponArea(): JSX.Element {
                     name="image"
                     type="text"
                     placeholder="Image..."
+                    defaultValue="https://picsum.photos/200"
                 />
                 <button disabled={!isValid}>Add Coupon</button>
             </form>

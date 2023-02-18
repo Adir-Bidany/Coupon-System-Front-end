@@ -24,11 +24,11 @@ input[type="date"] {
     font-size: medium;
 }
 .UpdateCustomer button:hover {
-    color: black;
+    font-weight: 700;
 }
 .UpdateCustomer button:disabled {
     cursor: not-allowed;
-    color: black;
+    color: red;
 }
 
 .UpdateCustomer span {

@@ -56,12 +56,11 @@ class AdminWebApi {
     ): Promise<AxiosResponse<CompanyModel>> {
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
-        return axios.get<CompanyModel>(
-            global.urls.admin + "/companies/" + companyId,
-            {
-                headers,
-            }
-        );
+        const url = global.urls.admin + "/companies/" + companyId;
+
+        return axios.get<CompanyModel>(url, {
+            headers,
+        });
     }
 
     public getSingleCustomer(
@@ -105,7 +104,7 @@ class AdminWebApi {
         companyId: number,
         company: CompanyUpdateModel
     ): Promise<AxiosResponse<CompanyModel>> => {
-        const url = global.urls.admin + "/v2/companies/" + companyId;
+        const url = global.urls.admin + "/companies/" + companyId;
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
         return axios.put<CompanyModel>(url, company, {

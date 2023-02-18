@@ -14,9 +14,6 @@ function CompanyCoupons(): JSX.Element {
     const addCoupon = () => {
         navigate("/addCoupon");
     };
-        const findCoupon = () => {
-            navigate("/findCoupon");
-        };
     const [coupons, setCoupons] = useState<CouponModel[]>([]);
     const [origin, setOrigin] = useState<CouponModel[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -122,9 +119,6 @@ function CompanyCoupons(): JSX.Element {
             <div className="NavigateCoupon">
                 <button className="Button" onClick={addCoupon}>
                     Add Coupon
-                </button>
-                <button className="Button" onClick={findCoupon}>
-                    Find Coupon
                 </button>
             </div>
 

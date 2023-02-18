@@ -24,11 +24,11 @@ input[type="date"] {
     font-size: medium;
 }
 .AddCoupon button:hover {
-    color: black;
+    font-weight: 700;
 }
 .AddCoupon button:disabled {
     cursor: not-allowed;
-    color: black;
+    color: red;
 }
 
 .AddCoupon span {

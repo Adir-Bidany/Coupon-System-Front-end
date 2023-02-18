@@ -18,11 +18,10 @@
     font-size: medium;
 }
 .Login button:hover {
-    color: black;
-}
+font-weight: 700;}
 .Login button:disabled {
     cursor: not-allowed;
-    color: black;
+    color: red;
 }
 
 .Login span {
@@ -36,6 +35,6 @@ select {
     height: 25px;
 }
 .select {
-    width: 200px;
-    height: 25px;
+    width: 210px;
+    height: 30px;
 }

@@ -4,17 +4,25 @@ import store from "../../../Redux/Store";
 import { loggedOut } from "../../../Redux/UserAppState";
 import { useNavigate } from "react-router-dom";
 import { removeCompanies, removeCustomers } from "../../../Redux/AdminAppState";
-import { removeCoupons } from "../../../Redux/CompanyAppState";
+import { removeCompanyCoupons } from "../../../Redux/CompanyAppState";
 import { removeCustomerCoupons } from "../../../Redux/CustomerAppState";
 
 function Logout(): JSX.Element {
     const navigate = useNavigate();
+    const userType = store.getState().userReducer.user.clientType;
     useEffect(() => {
         store.dispatch(loggedOut());
-        store.dispatch(removeCompanies());
-        store.dispatch(removeCustomers());
-        store.dispatch(removeCoupons());
-        store.dispatch(removeCustomerCoupons());
+        if (userType == "ADMINISTRATOR") {
+            store.dispatch(removeCompanies());
+            store.dispatch(removeCustomers());
+        }
+        if (userType == "COMPANY") {
+            store.dispatch(removeCompanyCoupons());
+        }
+        if (userType == "CUSTOMER") {
+            store.dispatch(removeCustomerCoupons());
+        }
+        console.log(store.getState().customerReducer.coupons);
         navigate("/login");
     }, []);
     return <></>;
