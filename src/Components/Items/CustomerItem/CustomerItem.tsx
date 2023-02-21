@@ -20,9 +20,9 @@ function CustomerItem(props: CustomerItemProps): JSX.Element {
     return (
         <div className="card">
             <h1>{props.customer.id}</h1>
-            <span>first name: {props.customer.firstName}</span>
-            <span>last name: {props.customer.lastName}</span>
-            <span>email: {props.customer.email}</span>
+            <span>First name: {props.customer.firstName}</span>
+            <span>Last name: {props.customer.lastName}</span>
+            <span>Email: {props.customer.email}</span>
             <div className="divButton">
                 <button
                     onClick={() => deleteCustomer(props.customer.id)}

@@ -5,12 +5,11 @@ import global from "./ConstantService";
 
 class CompanyWebApi {
     public addCoupon = (
-        token: string,
         coupon: CouponPayloadModel
     ): Promise<AxiosResponse<any>> => {
+        const token = store.getState().userReducer.user.token;
+        const headers = { authorization: token };
         const url = global.urls.company + "/" + token + "/coupons";
-        const token2 = store.getState().userReducer.user.token;
-        const headers = { authorization: token2 };
         return axios.post<any>(url, coupon, { headers });
     };
 
@@ -22,10 +21,9 @@ class CompanyWebApi {
     };
 
     public getAllCompanyCoupons(
-        token: string
     ): Promise<AxiosResponse<CouponModel[]>> {
-        const token2 = store.getState().userReducer.user.token;
-        const headers = { authorization: token2 };
+        const token = store.getState().userReducer.user.token;
+        const headers = { authorization: token };
         const url = global.urls.company + "/" + token + "/coupons";
         return axios.get<CouponModel[]>(url, { headers });
     }

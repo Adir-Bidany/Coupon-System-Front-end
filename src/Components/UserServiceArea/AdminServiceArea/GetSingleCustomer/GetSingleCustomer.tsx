@@ -43,7 +43,11 @@ function GetSingleCustomer(): JSX.Element {
             <h1>Find Customer</h1>
             <div>
                 <form onSubmit={handleSubmit(handleChange)}>
-                    <input {...register("customerId")} type="number" />
+                    <input
+                        {...register("customerId")}
+                        defaultValue={0}
+                        type="number"
+                    />
                     <button type="submit">Find</button>
                 </form>
             </div>

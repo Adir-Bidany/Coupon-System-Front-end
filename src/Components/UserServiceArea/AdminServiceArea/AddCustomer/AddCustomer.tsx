@@ -12,8 +12,14 @@ function AddCustomer(): JSX.Element {
     const schema = yup.object().shape({
         firstName: yup.string().required("First name is required"),
         lastName: yup.string().required("Last name is required"),
-        email: yup.string().required("Email is required"),
-        password: yup.string().required("Password is required"),
+        email: yup
+            .string()
+            .email("Invalid email pattern")
+            .required("Email is required"),
+        password: yup
+            .string()
+            .min(4, "password length minimum is 4 letters")
+            .required("Password is required"),
     });
 
     const {

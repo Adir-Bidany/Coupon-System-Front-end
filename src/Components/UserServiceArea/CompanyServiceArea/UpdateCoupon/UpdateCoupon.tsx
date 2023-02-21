@@ -174,7 +174,7 @@ function UpdateCoupon(): JSX.Element {
                     {...register("price")}
                     id="price"
                     name="price"
-                    type="number"
+                    type="double"
                     placeholder="Price..."
                 />
 

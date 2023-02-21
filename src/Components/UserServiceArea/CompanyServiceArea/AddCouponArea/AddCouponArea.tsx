@@ -6,8 +6,6 @@ import "./AddCouponArea.css";
 import { CouponPayloadModel } from "../../../../Models/Model";
 import companyWebApi from "../../../../Services/CompanyWebApi";
 import notify from "../../../../Services/ErrorMSG";
-import { useState } from "react";
-import store from "../../../../Redux/Store";
 
 function AddCouponArea(): JSX.Element {
     const navigate = useNavigate();
@@ -53,12 +51,10 @@ function AddCouponArea(): JSX.Element {
         resolver: yupResolver(schema),
     });
 
-    const [user,setUser]=useState(store.getState().userReducer.user)
-
     const postCoupon = async (coupon: CouponPayloadModel) => {
         console.log(coupon);
         await companyWebApi
-            .addCoupon(user.token, coupon)
+            .addCoupon(coupon)
             .then((res) => {
                 notify.success("Coupon added");
                 navigate("/companyCoupons");
@@ -149,7 +145,7 @@ function AddCouponArea(): JSX.Element {
                     {...register("price")}
                     id="price"
                     name="price"
-                    type="number"
+                    type="double"
                     placeholder="Price..."
                 />
 

@@ -21,9 +21,9 @@ function CompanyItem(props: CompanyItemProps): JSX.Element {
 
     return (
         <div className="card">
-            <h1>id: {props.company.id}</h1>
-            <span>name: {props.company.name}</span>
-            <span>email: {props.company.email}</span>
+            <h1>Id: {props.company.id}</h1>
+            <span>Name: {props.company.name}</span>
+            <span>Email: {props.company.email}</span>
             <div className="divButton">
                 <button
                     onClick={() => deleteCompany(props.company.id)}

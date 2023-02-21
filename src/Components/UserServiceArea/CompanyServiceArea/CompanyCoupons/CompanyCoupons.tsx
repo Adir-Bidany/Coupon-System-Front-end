@@ -6,7 +6,6 @@ import store from "../../../../Redux/Store";
 import companyWebApi from "../../../../Services/CompanyWebApi";
 import notify from "../../../../Services/ErrorMSG";
 import CouponItem from "../../../Items/CouponItem/CouponItem";
-
 import "./CompanyCoupons.css";
 
 function CompanyCoupons(): JSX.Element {
@@ -18,12 +17,10 @@ function CompanyCoupons(): JSX.Element {
     const [origin, setOrigin] = useState<CouponModel[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedPrice, setSelectedPrice] = useState(300);
-    const [user, setUser] = useState(store.getState().userReducer.user);
     useEffect(() => {
         companyWebApi
-            .getAllCompanyCoupons(user.token)
+            .getAllCompanyCoupons()
             .then((res) => {
-                console.log(user.token)
                 store.dispatch(gotAllCompanyCouponsAction(res.data));
                 setCoupons(res.data);
                 setOrigin(res.data);

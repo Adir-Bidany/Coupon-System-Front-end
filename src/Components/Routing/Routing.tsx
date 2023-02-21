@@ -27,8 +27,8 @@ import store from "../../Redux/Store";
 import { useState } from "react";
 
 function Routing(): JSX.Element {
-const [user, setUser] = useState<string>(store.getState().userReducer.user.token);
-const navigate=useNavigate();
+    const [user,setUser]=useState<string>(store.getState().userReducer.user.token)
+    const navigate=useNavigate
     return (
         <div className="Routing">
             <Routes>
@@ -38,7 +38,6 @@ const navigate=useNavigate();
                 <Route path="about" element={<About />} />
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<Logout />} />
-                {user===null?<>navigate("/login")</>:<>
                 <Route path="purchase" element={<PurchaseCouponArea />} />
                 <Route path="myCoupons" element={<MyCouponsArea />} />
                 <Route path="addCoupon" element={<AddCouponArea />} />
@@ -49,19 +48,17 @@ const navigate=useNavigate();
                 <Route path="updateCustomer/:id" element={<UpdateCustomer />} />
                 <Route path="myCompanies" element={<GetAllCompanies />} />
                 <Route path="getSingleCompany" element={<GetSingleCompany />} />
-                <Route
-                    path="getSingleCustomer"
-                    element={<GetSingleCustomer />}
-                />
+                <Route path="getSingleCustomer" element={<GetSingleCustomer />} />
                 <Route path="myCustomers" element={<MyCustomers />} />
                 <Route path="addCompany" element={<AddCompany />} />
-                <Route path="companyCoupons" element={<CompanyCoupons />} />
+                <Route
+                
+                path="companyCoupons" element={<CompanyCoupons />} />
                 <Route path="deleteCoupon/:id" element={<DeleteCoupon />} />
                 <Route path="updateCoupon/:id" element={<UpdateCoupon />} />
                 <Route path="deleteCustomer/:id" element={<DeleteCustomer />} />
                 <Route path="developer" element={<Developer />} />
                 <Route path="*" element={<Page404 />} />
-                </>}
             </Routes>
         </div>
     );
