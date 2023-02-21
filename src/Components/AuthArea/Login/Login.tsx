@@ -2,7 +2,7 @@ import "./Login.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {  LoginModel } from "../../../Models/Auth";
+import { LoginModel } from "../../../Models/Auth";
 import { loggedIn } from "../../../Redux/UserAppState";
 import { useNavigate } from "react-router-dom";
 import store from "../../../Redux/Store";
@@ -11,6 +11,7 @@ import notify from "../../../Services/ErrorMSG";
 
 function Login(): JSX.Element {
     const navigate = useNavigate();
+    
 
     const schema = yup.object().shape({
         email: yup
@@ -28,30 +29,30 @@ function Login(): JSX.Element {
         formState: { errors, isDirty, isValid },
     } = useForm<LoginModel>({ mode: "all", resolver: yupResolver(schema) });
 
-const postLogin = async (obj: LoginModel) => {
-    const credentials = {
-        clientType: obj.clientType,
-        email: obj.email,
-        password: obj.password,
+    const postLogin = async (obj: LoginModel) => {
+        const credentials = {
+            clientType: obj.clientType,
+            email: obj.email,
+            password: obj.password,
+        };
+        await LoginWebApi.login(credentials)
+            .then((res) => {
+                notify.success("login successfully");
+
+                store.dispatch(loggedIn(res.data));
+
+                if (obj.clientType === "ADMINISTRATOR") {
+                    navigate("/myCompanies");
+                }
+                if (obj.clientType === "COMPANY") {
+                    navigate("/companyCoupons");
+                }
+                if (obj.clientType === "CUSTOMER") {
+                    navigate("/myCoupons");
+                }
+            })
+            .catch((err) => notify.error(err));
     };
-    await LoginWebApi.login(credentials)
-        .then((res) => {
-            notify.success("login successfully");
-
-            store.dispatch(loggedIn(res.data));
-
-            if (obj.clientType === "ADMINISTRATOR") {
-                navigate("/myCompanies");
-            }
-            if (obj.clientType === "COMPANY") {
-                navigate("/companyCoupons");
-            }
-            if (obj.clientType === "CUSTOMER") {
-                navigate("/myCoupons");
-            }
-        })
-        .catch((err) => notify.error(err));
-};
     return (
         <div className="Login col">
             <form onSubmit={handleSubmit(postLogin)}>

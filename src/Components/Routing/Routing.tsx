@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import App from "../../App";
 import Login from "../AuthArea/Login/Login";
 import Logout from "../AuthArea/Logout/Logout";
@@ -23,8 +23,12 @@ import MyCouponsArea from "../UserServiceArea/CustomerServiceArea/MyCouponsArea/
 import PurchaseCouponArea from "../UserServiceArea/CustomerServiceArea/PurchaseCouponArea/PurchaseCouponArea";
 import "./Routing.css";
 import UpdateCustomer from "../UserServiceArea/AdminServiceArea/UpdateCustomer/UpdateCustomer";
+import store from "../../Redux/Store";
+import { useState } from "react";
 
 function Routing(): JSX.Element {
+const [user, setUser] = useState<string>(store.getState().userReducer.user.token);
+const navigate=useNavigate();
     return (
         <div className="Routing">
             <Routes>
@@ -34,6 +38,7 @@ function Routing(): JSX.Element {
                 <Route path="about" element={<About />} />
                 <Route path="login" element={<Login />} />
                 <Route path="logout" element={<Logout />} />
+                {user===null?<>navigate("/login")</>:<>
                 <Route path="purchase" element={<PurchaseCouponArea />} />
                 <Route path="myCoupons" element={<MyCouponsArea />} />
                 <Route path="addCoupon" element={<AddCouponArea />} />
@@ -56,6 +61,7 @@ function Routing(): JSX.Element {
                 <Route path="deleteCustomer/:id" element={<DeleteCustomer />} />
                 <Route path="developer" element={<Developer />} />
                 <Route path="*" element={<Page404 />} />
+                </>}
             </Routes>
         </div>
     );

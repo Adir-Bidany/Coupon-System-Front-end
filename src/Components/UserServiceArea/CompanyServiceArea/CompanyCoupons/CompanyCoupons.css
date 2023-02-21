@@ -13,48 +13,44 @@
     align-items: center;
 }
 
-.divButton{
-padding: 10px;
-display: flex;
-justify-content: space-around;
-}
-
-.button1{
-display: flex;
-align-items: center;
-justify-content: space-around;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-        rgba(0, 0, 0, 0.22) 0px 10px 10px;
-}
-
-.button1:hover{
-display: flex;
-align-items: center;
-justify-content: space-around;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-        rgba(0, 0, 0, 0.22) 0px 10px 10px;
-}
-
-.NavigateCoupon{
+.divButton {
+    padding: 30px;
     display: flex;
-    justify-content:space-evenly;
+    gap: 100px;
+}
+
+.button1 {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.button1:hover {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.NavigateCoupon {
+    display: flex;
+    justify-content: space-evenly;
     flex-direction: row;
     padding: 20px;
 }
 
-.Button{
+.Button {
     font-size: 20px;
     width: 400px;
     height: 40px;
-background: rgba(255, 255, 255, 0.5);}
-.Button:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.Button:hover {
     font-size: 20px;
-    font-weight:800;
+    font-weight: 800;
     width: 400px;
     height: 40px;
     background: rgba(255, 255, 255, 0.7);
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
         rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
-
-

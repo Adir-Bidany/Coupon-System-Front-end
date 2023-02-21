@@ -22,7 +22,6 @@ function Logout(): JSX.Element {
         if (userType == "CUSTOMER") {
             store.dispatch(removeCustomerCoupons());
         }
-        console.log(store.getState().customerReducer.coupons);
         navigate("/login");
     }, []);
     return <></>;

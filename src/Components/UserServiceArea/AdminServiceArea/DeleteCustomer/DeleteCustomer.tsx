@@ -30,12 +30,12 @@ function DeleteCustomer(): JSX.Element {
             <h2 className="redColor">
                 Are you sure you want to delete customer #{customerId}
             </h2>
-            <div className="row">
+            <div className="deleteGap row">
                 <button className="delete" onClick={cancel}>
                     cancel
                 </button>
-                <button className="delete" onClick={deleteCustomer}>
-                    yes
+                <button className="delete redColor" onClick={deleteCustomer}>
+                    delete
                 </button>
             </div>
         </div>

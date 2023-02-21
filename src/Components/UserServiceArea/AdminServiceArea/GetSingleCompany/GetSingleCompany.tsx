@@ -44,7 +44,7 @@ function GetSingleCompany(): JSX.Element {
             <div>
                 <form onSubmit={handleSubmit(handleChange)}>
                     <input {...register("companyId")} type="number" />
-                    <button type="submit">Find</button>
+                    <button className="find" type="submit">Find</button>
                 </form>
             </div>
             <div>

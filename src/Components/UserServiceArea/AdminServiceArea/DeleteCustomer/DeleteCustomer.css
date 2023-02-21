@@ -1,8 +1,7 @@
 .DeleteCustomer {
-		gap: 10px;
-
+    gap: 10px;
 }
-.delete{
+.delete {
     width: 200px;
     height: 25px;
 }

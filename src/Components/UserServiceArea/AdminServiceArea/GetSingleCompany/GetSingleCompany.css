@@ -14,7 +14,7 @@ input[type="number"] {
     height: 25px;
 }
 
-.GetSingleCompany button {
+.GetSingleCompany .find {
     width: 100%;
     height: 25px;
     margin: 5px;
@@ -23,7 +23,6 @@ input[type="number"] {
     border: none;
     font-size: medium;
 }
-.GetSingleCompany button:hover {
-    color: black;
-}
+.GetSingleCompany .find:hover {
+font-weight: 700;}
 

@@ -9,7 +9,7 @@ class CustomerWebApi {
     ): Promise<AxiosResponse<CouponModel[]>> {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        const url = global.urls.customer + "/token/" + token + "/coupons";
+        const url = global.urls.customer + "/" + token + "/coupons";
         return axios.get<CouponModel[]>(url, { headers });
     }
 
@@ -28,8 +28,8 @@ class CustomerWebApi {
     ): Promise<AxiosResponse<any>> => {
         const token2 = store.getState().userReducer.user.token;
         const headers = { authorization: token2 };
-        const url = global.urls.customer + "/" + token + "/coupons/" + couponId;
-        return axios.post<any>(url, { headers, });
+        const url = global.urls.customer + "/"+token+"/coupons/" + couponId;
+        return axios.post<any>(url, null, { headers });
     };
 }
 const customerWebApi = new CustomerWebApi();
