@@ -58,7 +58,7 @@ function AddCompany(): JSX.Element {
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="name..."
+                    placeholder="Name..."
                 />
 
                 {errors.email ? (

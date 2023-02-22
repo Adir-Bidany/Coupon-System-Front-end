@@ -59,7 +59,7 @@ function AddCustomer(): JSX.Element {
                     id="firstName"
                     name="firstName"
                     type="text"
-                    placeholder="firstName..."
+                    placeholder="FirstName..."
                 />
                 {errors.lastName ? (
                     <span>{errors.lastName?.message}</span>
@@ -71,7 +71,7 @@ function AddCustomer(): JSX.Element {
                     id="lastName"
                     name="lastName"
                     type="text"
-                    placeholder="lastName..."
+                    placeholder="LastName..."
                 />
 
                 {errors.email ? (

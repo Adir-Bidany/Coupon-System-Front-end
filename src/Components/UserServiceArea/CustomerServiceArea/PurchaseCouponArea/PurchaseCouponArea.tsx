@@ -19,8 +19,6 @@ function PurchaseCouponArea(): JSX.Element {
             })
             .catch((err) => notify.error(err));
     }, []);
-    console.log(coupons);
-    console.log(origin);
 
     const all = origin;
     const byCategory = origin.filter((c) => c.category === selectedCategory);
@@ -51,7 +49,7 @@ function PurchaseCouponArea(): JSX.Element {
         { value: "All", label: "All" },
         { value: "FOOD", label: "FOOD" },
         { value: "RESTAURANT", label: "RESTAURANT" },
-        { value: "ELECTRICITYl", label: "ELECTRICITY" },
+        { value: "ELECTRICITY", label: "ELECTRICITY" },
         { value: "VACATION", label: "VACATION" },
     ];
 

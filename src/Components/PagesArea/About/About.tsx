@@ -2,7 +2,7 @@ import "./About.css";
 
 function About(): JSX.Element {
     return (
-        <div className="About center">
+        <div className="About col">
             <h1>Coupon system</h1>
             <h3>
                 Welcome to our coupon system, where you can easily access a wide

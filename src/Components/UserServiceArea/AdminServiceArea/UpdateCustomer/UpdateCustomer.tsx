@@ -17,8 +17,7 @@ function UpdateCustomer(): JSX.Element {
             .getState()
             .adminReducer.customers.filter((cust) => cust.id === id)[0]
     );
-    console.log(store.getState().adminReducer.customers);
-    console.log(customer);
+
     const navigate = useNavigate();
     let defaultValuesObj = {
         ...{

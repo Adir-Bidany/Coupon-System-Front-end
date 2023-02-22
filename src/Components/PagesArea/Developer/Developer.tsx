@@ -3,7 +3,7 @@ import MyPic from "../../../Assets/Images/MyPic.jpg"
 
 function Developer(): JSX.Element {
     return (
-        <div className="Developer center">
+        <div className="Developer col">
             <img src={MyPic} />
             <h3>
                 As a developer, I have a passion for creating innovative and

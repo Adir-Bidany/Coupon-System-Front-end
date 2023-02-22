@@ -1,5 +1,5 @@
 import "./UpdateCompany.css";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CompanyUpdateModel } from "../../../../Models/Model";
@@ -17,8 +17,7 @@ function UpdateCompany(): JSX.Element {
             .getState()
             .adminReducer.companies.filter((comp) => comp.id === id)[0]
     );
-    console.log(store.getState().adminReducer.companies);
-    console.log(company);
+
     const navigate = useNavigate();
     let defaultValuesObj = {
         ...{ email: company.email, password: company.password },
@@ -61,7 +60,6 @@ function UpdateCompany(): JSX.Element {
         <div className="UpdateCompany col">
             <h1>Update Company</h1>
             <form onSubmit={handleSubmit(updateCompany)}>
-
                 {errors.email ? (
                     <span>{errors.email?.message}</span>
                 ) : (

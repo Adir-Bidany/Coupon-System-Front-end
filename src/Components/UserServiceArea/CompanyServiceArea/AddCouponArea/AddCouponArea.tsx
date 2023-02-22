@@ -52,7 +52,6 @@ function AddCouponArea(): JSX.Element {
     });
 
     const postCoupon = async (coupon: CouponPayloadModel) => {
-        console.log(coupon);
         await companyWebApi
             .addCoupon(coupon)
             .then((res) => {
@@ -62,7 +61,6 @@ function AddCouponArea(): JSX.Element {
             .catch((err) => {
                 notify.error(err);
             });
-        console.log(coupon);
     };
 
     return (
