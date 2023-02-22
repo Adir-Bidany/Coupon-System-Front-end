@@ -20,21 +20,11 @@ class CompanyWebApi {
         return axios.delete<any>(url, { headers });
     };
 
-    public getAllCompanyCoupons(
-    ): Promise<AxiosResponse<CouponModel[]>> {
+    public getAllCompanyCoupons(): Promise<AxiosResponse<CouponModel[]>> {
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
         const url = global.urls.company + "/" + token + "/coupons";
         return axios.get<CouponModel[]>(url, { headers });
-    }
-
-    public getSingleCoupon(
-        couponId: number
-    ): Promise<AxiosResponse<CouponModel>> {
-        const token = store.getState().userReducer.user.token;
-        const headers = { authorization: token };
-        const url = global.urls.company + "/coupons/" + couponId;
-        return axios.get<CouponModel>(url, { headers });
     }
 
     public updateCoupon = (

@@ -10,22 +10,22 @@ import { gotAllCompaniesAction } from "../../../../Redux/AdminAppState";
 
 function GetAllCompanies(): JSX.Element {
     const navigate = useNavigate();
-    const [selectedCompany, setSelectedCompany] = useState("All");
     const addCompany = () => {
         navigate("/addCompany");
     };
-        const findCompany = () => {
-            navigate("/getSingleCompany");
-        };
+    const findCompany = () => {
+        navigate("/getSingleCompany");
+    };
     const [companies, setCompanies] = useState<CompanyModel[]>([]);
     useEffect(() => {
         adminWebApi
             .getAllCompanies()
             .then((res) => {
-            store.dispatch(gotAllCompaniesAction(res.data))
-            setCompanies(res.data)})
+                store.dispatch(gotAllCompaniesAction(res.data));
+                setCompanies(res.data);
+            })
             .catch((err) => notify.error(err));
-    },[]);
+    }, []);
 
     return (
         <div>

@@ -16,7 +16,7 @@ function AuthMenu(): JSX.Element {
         <div className="AuthMenu row">
             {user?.token ? (
                 <>
-                    Connected as {user.email}&nbsp;
+                    Hello {user.name} &nbsp;
                     <CustomLink to="logout">Logout</CustomLink>
                 </>
             ) : (
@@ -24,7 +24,6 @@ function AuthMenu(): JSX.Element {
                     Hello guest &nbsp;
                     <CustomLink to="login">Login </CustomLink>
                 </>
-
             )}
         </div>
     );

@@ -1,7 +1,7 @@
 import { User } from "./../Models/Auth";
 export class UserAppState {
     // Step 1 - Define User global App State
-    public user: User = {  token: "" ,email:"",clientType:""};
+    public user: User = { token: "", email: "", clientType: "", name: "" };
 }
 
 // Step 2 - Define all actions
@@ -43,7 +43,7 @@ export function userReducer(
             break;
         }
         case ActionType.LOGGED_OUT: {
-            newState.user = {  token: "" ,email: "",clientType:""};
+            newState.user = { token: "", email: "", clientType: "", name: "" };
             break;
         }
     }

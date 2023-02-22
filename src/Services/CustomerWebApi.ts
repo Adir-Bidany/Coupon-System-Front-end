@@ -4,8 +4,7 @@ import store from "../Redux/Store";
 import global from "./ConstantService";
 
 class CustomerWebApi {
-    public getCustomerPurchaseCoupons(
-    ): Promise<AxiosResponse<CouponModel[]>> {
+    public getCustomerPurchaseCoupons(): Promise<AxiosResponse<CouponModel[]>> {
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
         const url = global.urls.customer + "/" + token + "/coupons";
@@ -21,12 +20,10 @@ class CustomerWebApi {
         });
     }
 
-    public purchaseCoupon = (
-        couponId: number
-    ): Promise<AxiosResponse<any>> => {
+    public purchaseCoupon = (couponId: number): Promise<AxiosResponse<any>> => {
         const token = store.getState().userReducer.user.token;
         const headers = { authorization: token };
-        const url = global.urls.customer + "/"+token+"/coupons/" + couponId;
+        const url = global.urls.customer + "/" + token + "/coupons/" + couponId;
         return axios.post<any>(url, null, { headers });
     };
 }

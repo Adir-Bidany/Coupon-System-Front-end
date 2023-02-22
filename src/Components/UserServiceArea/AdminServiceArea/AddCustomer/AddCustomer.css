@@ -15,7 +15,7 @@ input[type="email"] {
 }
 
 .AddCustomer button {
-    width: 100%;
+    width: 207px;
     height: 25px;
     margin: 5px;
     background-color: #1c3c5c;
@@ -24,11 +24,11 @@ input[type="email"] {
     font-size: medium;
 }
 .AddCustomer button:hover {
-    font-weight: 700;
+    font-weight: 600;
 }
 .AddCustomer button:disabled {
     cursor: not-allowed;
-    color: black;
+    color: red;
 }
 
 .AddCustomer span {

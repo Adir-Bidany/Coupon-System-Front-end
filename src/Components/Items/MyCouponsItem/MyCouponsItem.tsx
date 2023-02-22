@@ -10,12 +10,12 @@ function MyCouponsItem(props: MyCouponsItemProps): JSX.Element {
             <img src={props.coupon.image} alt="Coupon" />
             <h1>{props.coupon.title}</h1>
             <p className="price">${props.coupon.price}</p>
-            <span>name: {props.coupon.company.name}</span>
-            <span>category: {props.coupon.category}</span>
-            <span>description: {props.coupon.description}</span>
-            <span>start date: {props.coupon.startDate.toString()}</span>
-            <span>end date: {props.coupon.endDate.toString()}</span>
-            <span>amount: {props.coupon.amount}</span>
+            <span>Name: {props.coupon.company.name}</span>
+            <span>Category: {props.coupon.category}</span>
+            <span>Description: {props.coupon.description}</span>
+            <span>Start date: {props.coupon.startDate.toString()}</span>
+            <span>End date: {props.coupon.endDate.toString()}</span>
+            <span>Amount: {props.coupon.amount}</span>
         </div>
     );
 }

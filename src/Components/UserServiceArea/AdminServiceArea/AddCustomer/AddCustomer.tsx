@@ -64,7 +64,7 @@ function AddCustomer(): JSX.Element {
                 {errors.lastName ? (
                     <span>{errors.lastName?.message}</span>
                 ) : (
-                    <label htmlFor="lastName">First name</label>
+                    <label htmlFor="lastName">Last name</label>
                 )}
                 <input
                     {...register("lastName")}

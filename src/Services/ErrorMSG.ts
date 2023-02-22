@@ -23,16 +23,13 @@ class Notify {
         }
 
         if (typeof err?.response?.data === "string") {
-            //Backend exact error
             return err.response.data;
         }
 
         if (Array.isArray(err?.response?.data)) {
-            // Backend exact error list
             return err?.response?.data[0];
         }
 
-        // Must be last
         if (typeof err?.message === "string") {
             return err.message;
         }

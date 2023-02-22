@@ -9,8 +9,7 @@
 }
 .AddCompany input[type="text"],
 input[type="number"],
-input[type="email"]
-{
+input[type="email"] {
     width: 200px;
     height: 25px;
 }
@@ -25,7 +24,7 @@ input[type="email"]
     font-size: medium;
 }
 .AddCompany button:hover {
-    color: black;
+    font-weight: 600;
 }
 .AddCompany button:disabled {
     cursor: not-allowed;

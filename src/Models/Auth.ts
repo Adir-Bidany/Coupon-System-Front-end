@@ -14,4 +14,5 @@ export interface User {
     token: string;
     email: string;
     clientType:string;
+    name:string;
 }

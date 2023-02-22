@@ -14,14 +14,11 @@ function MyCouponsArea(): JSX.Element {
             .catch((err) => notify.error(err));
     },[]);
     return (
-        <div>
-            <h1 className="MyCouponsAreaH1">My Coupons</h1>
             <div className="MyCouponsArea">
                 {coupons.map((c, idx) => (
                     <MyCouponsItem key={"c" + idx} coupon={c} />
                 ))}
             </div>
-        </div>
     );
 }
 
